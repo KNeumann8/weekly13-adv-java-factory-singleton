@@ -12,7 +12,7 @@ public class CalculatorDriver {
             String weightUnits = client.getMeasurementSystem() == MeasurementSystem.METRIC ? "kilograms" : "pounds";
             String heightUnits = client.getMeasurementSystem() == MeasurementSystem.METRIC ? "meters" : "inches";
 
-            double bmi = CalcTool.calcBMI(client.getHeight(), client.getWeight(), client.getMeasurementSystem());
+            double bmi = EnumCalcTool.INSTANCE.calcBMI(client.getHeight(), client.getWeight(), client.getMeasurementSystem());
 
             System.out.printf("%s weighs %.1f %s and is %.1f %s tall with a BMI of %.2f\n",
                     client.getName(),
@@ -23,7 +23,7 @@ public class CalculatorDriver {
                     bmi);
         }
 
-        System.out.println("The average BMI calculated in this run is " + CalcTool.averageBMI());
+        System.out.println("The average BMI calculated in this run is " + EnumCalcTool.INSTANCE.averageBMI());
     }
 
     private static List<Client> initClientList() {
@@ -34,4 +34,5 @@ public class CalculatorDriver {
         clients.add(new Client("Daniela", 141, 2.1, MeasurementSystem.METRIC));
         return clients;
     }
+
 }
